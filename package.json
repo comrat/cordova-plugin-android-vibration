@@ -1,0 +1,29 @@
+{
+    "version": "0.0.1",
+    "name": "com.comrat.cordova.plugins.vibration",
+    "cordova_name": "AndroidVibration",
+    "description": "Cordova android native vibration plugin",
+    "platforms": [
+        "android"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/comrat/cordova-plugin-android-vibration.git"
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "cordova-android"
+    ],
+  "author": "Poberiy Alexey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comrat/cordova-plugin-android-vibration/issues"
+  },
+  "homepage": "https://github.com/comrat/cordova-plugin-android-vibration"
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="com.comrat.cordova.plugins.vibration"
+	version="0.0.1">
+
+	<name>AndroidVibration</name>
+	<description>Cordova Android TV Plugin</description>
+	<author email="poberyaa@gmail.com" href="http://pureqml.com">comrat</author>
+	<license>MIT</license>
+	<keywords>ecosystem:cordova,cordova-android</keywords>
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<platform name="android">
+		<config-file target="config.xml" parent="/*">
+			<feature name="AndroidVibration">
+				<param name="android-package" value="org.apache.cordova.plugin.AndroidVibration"/>
+			</feature>
+		</config-file>
+
+		<source-file src="src/android/cordova-plugin-android-vibration/AndroidVibration.java" target-dir="src/org/apache/cordova/plugin" />
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.VIBRATE"/>
+		</config-file>
+	</platform>
+</plugin>
