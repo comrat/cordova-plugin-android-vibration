@@ -33,6 +33,9 @@ public class AndroidVibration extends CordovaPlugin {
 		} else if (action.equals("hasVibrator")) {
 			this.hasVibrator(callbackContext);
 			return true;
+		} else if (action.equals("cancel")) {
+			this.hasVibrator(callbackContext);
+			return true;
 		} else if (action.equals("hasAmplitudeControl")) {
 			this.hasAmplitudeControl(callbackContext);
 			return true;
@@ -50,6 +53,12 @@ public class AndroidVibration extends CordovaPlugin {
 		Context context = this.cordova.getActivity().getApplicationContext();
 		Vibrator vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
 		callbackContext.success(String.valueOf(vibrator.hasAmplitudeControl()));
+	}
+
+	private void cancel(CallbackContext callbackContext) {
+		Context context = this.cordova.getActivity().getApplicationContext();
+		((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).cancel();
+		callbackContext.success();
 	}
 
 	private void vibrateWithPattern(JSONArray pattern, int repeat, CallbackContext callbackContext) throws JSONException {
