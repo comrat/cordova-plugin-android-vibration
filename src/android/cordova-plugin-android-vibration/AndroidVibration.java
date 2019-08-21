@@ -34,7 +34,7 @@ public class AndroidVibration extends CordovaPlugin {
 			this.hasVibrator(callbackContext);
 			return true;
 		} else if (action.equals("cancel")) {
-			this.hasVibrator(callbackContext);
+			this.cancel(callbackContext);
 			return true;
 		} else if (action.equals("hasAmplitudeControl")) {
 			this.hasAmplitudeControl(callbackContext);
