@@ -25,6 +25,11 @@ public class AndroidVibration extends CordovaPlugin {
 			int duration = args.getInt(0);
 			this.vibrate(duration, callbackContext);
 			return true;
+		} else if (action.equals("vibrateWithAmplitude")) {
+			int duration = args.getInt(0);
+			int amplitude = args.getInt(1);
+			this.vibrateWithAmplitude(duration, amplitude, callbackContext);
+			return true;
 		} else if (action.equals("vibrateWithPattern")) {
 			JSONArray pattern = args.getJSONArray(0);
 			int repeat = args.getInt(1);
@@ -79,6 +84,12 @@ public class AndroidVibration extends CordovaPlugin {
 		} else {
 			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(numbers, repeat);
 		}
+		callbackContext.success();
+	}
+
+	private void vibrateWithAmplitude(int duration, int amplitude, CallbackContext callbackContext) {
+		Context context = this.cordova.getActivity().getApplicationContext();
+		((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(duration, amplitude));
 		callbackContext.success();
 	}
 
