@@ -30,6 +30,12 @@ public class AndroidVibration extends CordovaPlugin {
 			int amplitude = args.getInt(1);
 			this.vibrateWithAmplitude(duration, amplitude, callbackContext);
 			return true;
+		} else if (action.equals("vibrateWithPatternAndAmplitude")) {
+			JSONArray pattern = args.getJSONArray(0);
+			JSONArray amplitude = args.getJSONArray(1);
+			int repeat = args.getInt(2);
+			this.vibrateWithPatternAndAmplitude(pattern, amplitude, repeat, callbackContext);
+			return true;
 		} else if (action.equals("vibrateWithPattern")) {
 			JSONArray pattern = args.getJSONArray(0);
 			int repeat = args.getInt(1);
@@ -81,6 +87,32 @@ public class AndroidVibration extends CordovaPlugin {
 
 		 if (Build.VERSION.SDK_INT >= 26) {
 			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createWaveform(numbers, repeat));
+		} else {
+			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(numbers, repeat);
+		}
+		callbackContext.success();
+	}
+
+	private void vibrateWithPatternAndAmplitude(JSONArray pattern, JSONArray amplitude, int repeat, CallbackContext callbackContext) throws JSONException {
+		Context context = this.cordova.getActivity().getApplicationContext();
+
+		if (pattern == null) {
+			callbackContext.success();
+			return;
+		}
+
+		long[] numbers = new long[pattern.length()];
+		for (int i = 0; i < pattern.length(); ++i) {
+			numbers[i] = pattern.getInt(i);
+		}
+
+		int[] amplitudePattern = new int[amplitude.length()];
+		for (int i = 0; i < amplitude.length(); ++i) {
+			amplitudePattern[i] = amplitude.getInt(i);
+		}
+
+		 if (Build.VERSION.SDK_INT >= 26) {
+			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createWaveform(numbers, amplitudePattern, repeat));
 		} else {
 			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(numbers, repeat);
 		}
