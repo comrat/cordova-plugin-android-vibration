@@ -5,7 +5,7 @@
 	version="0.0.1">
 
 	<name>AndroidVibration</name>
-	<description>Cordova Android TV Plugin</description>
+	<description>Cordova Android Vibration Plugin</description>
 	<author email="poberyaa@gmail.com" href="http://pureqml.com">comrat</author>
 	<license>MIT</license>
 	<keywords>ecosystem:cordova,cordova-android</keywords>
